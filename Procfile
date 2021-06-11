@@ -1,0 +1,1 @@
+web: gunicorn pollkar.wsgi --log-file -
