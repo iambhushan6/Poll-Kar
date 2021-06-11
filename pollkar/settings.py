@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=)yw535ey742@0@&-ssx_b61185@0((8)zx@!-p5y#q-&t#a__
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'pollkar.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'que-less.herokuapp.com']
 
 
 # Application definition
@@ -129,7 +129,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-STATIC_ROOT = "https://pollkar.herokuapp.com/static/"
+STATIC_ROOT = "https://que-less.herokuapp.com/static/"
 # STATIC_ROOT = "/var/www/example.com/static/"
 
 # Default primary key field type
