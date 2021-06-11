@@ -3,7 +3,8 @@ from main import forms, models
 
 # Create your views here.
 def home(request):
-    polls = models.Poll.objects.all()
+    poll = models.Poll.objects.all()
+    polls = poll[::-1]
     context = {
         'polls': polls
     }

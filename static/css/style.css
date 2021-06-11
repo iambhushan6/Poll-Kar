@@ -162,6 +162,10 @@ label{
 
 
 /* NAVBAR */
+navbar {
+  position: sticky; /* Set the navbar to fixed position */
+  top: 0;
+ }
 ul {
     list-style-type: none;
     margin: 0;
@@ -170,6 +174,7 @@ ul {
     background-color: #333;
     font-family: cursive;
     font-size: large;
+    
   }
   
   li {
