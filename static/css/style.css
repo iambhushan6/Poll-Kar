@@ -25,13 +25,22 @@ body {
     }
   }
   /* background: linear-gradient(100deg,#3af0f0 9% ,#463ae6 5%,#ae47f3 3%); */
+ /* .card
+  { width: 24%;
+  height: 370px;
+  margin: 30px auto;
+ } */
+
+  .scrollable{
+    overflow-y: auto;
+    max-height: 300px;
+  }
 
 .navbar1 {
   font-size: 40px;
   margin-top: 10px;
   margin-left: 140px;
   color:rgb(10, 10, 10);
-  font-family:cursive;
   font-weight:bolder;
 
 }
@@ -160,47 +169,3 @@ label{
   font-size: 20px;
 }
 
-
-/* NAVBAR */
-navbar {
-  position: sticky; /* Set the navbar to fixed position */
-  top: 0;
- }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    font-family: cursive;
-    font-size: large;
-    
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 9px 14px;
-    text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: rgb(18, 131, 33);
-  }
-  .active {
-    background-color: #04AA6D;
-  }
-  /* Add a gray right border to all list items, except the last item (last-child) */
-li {
-    border-right: 0px solid #bbb;
-  }
-  
-  li:last-child {
-    border-right: none;
-  }

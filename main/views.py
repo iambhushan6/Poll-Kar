@@ -2,20 +2,28 @@ from django.shortcuts import redirect, render, HttpResponse
 from main import forms, models
 
 # Create your views here.
-def home(request):
+# def home(request):
+#     poll = models.Poll.objects.all()
+#     polls = poll[::-1]
+#     context = {
+#         'polls': polls
+#     }
+#     return render( request, 'main/home.html', context)
+
+def allpolls(request):
     poll = models.Poll.objects.all()
     polls = poll[::-1]
     context = {
         'polls': polls
     }
-    return render( request, 'main/home.html', context)
+    return render( request, 'main/index.html', context)
 
 def create(request):
     if request.method == "POST":
         form = forms.CreatePollForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('allpolls')
     else:
         form = forms.CreatePollForm()
 

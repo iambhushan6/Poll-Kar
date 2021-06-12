@@ -6,72 +6,132 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
-    
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+      <!-- {% static 'css/style.css' %} -->
+    <link rel="icon" href="{% static 'img/logo1.png' %}"  type="image" sizes="16x16">
+    <!-- "{% static 'img/logo1.png' %}"     -->
 
     <title>Vote</title>
 </head>
 
 <body>
+    <!-- Header Starts -->
+    <div class="header">
+        <div class="header__left">
+            <img src="{% static 'img/logo1.png' %}" alt="" />
+            <h1>PoLL-कर</h1>
+        </div>
+
+        <div class="header__right">
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> home </i>
+                <h3><a class="active" href="{% url 'allpolls' %}">Home</a></h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> supervisor_account </i>
+                <h3>My Network</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> notifications </i>
+                <h3>Notifications</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> account_circle </i>
+                <h3>Me</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Header Ends -->
 
     <!-- NAVBAR HERE  -->
-    <navbar>
+    {% comment %} <navbar>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'create' %}">New Poll</a></li>
         </ul>
-    </navbar>
+    </navbar> {% endcomment %}
 
 
 
-    <header>
+    {% comment %} <header>
         <!-- Image and text -->
         <nav class="navbar1">
 
             <img id="ilogo" src="{% static 'img/logo1.png' %}" width="50" alt="logo"><span> PoLL-कर</span> 
 
         </nav>
-    </header><br><br><br><br>
-    <center>
-        <div class="card text-warning bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">{{ poll.datetime }}</div>
-            <div class="card-body">
-                    <h5 class="card-title">{{ poll.question }}</h5><br>
+    </header> {% endcomment %}
+    <br><br><br><br>
+
+    <!-- Post Starts -->
+            <div>
+                <div class="wrapper">
+                    <header>{{ poll.question }}</header>
+                    <span class="text">{{ poll.datetime }}</span>
+
                     <form method="POST">
                         {% csrf_token %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="option_one" name="poll" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                <p class="card-text">1. {{ poll.option_one }}</p>
-                            </label>
+                    <div class="poll-area">
+                        <input type="radio" value="option_one" name="poll" id="opt-1">
+                        <input type="radio" value="option_two" name="poll" id="opt-2">
+                        <input type="radio" value="option_three" name="poll" id="opt-3">
+                        <input type="radio" value="option_four" name="poll" id="opt-4">
+                        <!-- <button type="button" id="opt-4">view result</button>  -->
+                        <label for="opt-1" class="opt-1">
+                            <div class="row">
+                                <div class="column">
+                                    {% comment %} <span class="circle"></span> {% endcomment %}
+                                    <span>{{ poll.option_one }}</span>
+                                </div>
+                            </div>
+
+                        </label>
+                        <label for="opt-2" class="opt-2">
+                            <div class="row">
+                                <div class="column">
+                                    <!-- <span class="circle"></span> -->
+                                    <span class="text">{{ poll.option_two }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <label for="opt-3" class="opt-3">
+                            <div class="row">
+                                <div class="column">
+                                    <!-- <span class="circle"></span> -->
+                                    <span class="text">{{ poll.option_three }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <label for="opt-4" class="opt-4">
+                            <div class="row">
+                                <div class="column">
+                                    <!-- <span class="circle"></span> -->
+                                    <span class="text">{{ poll.option_four }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <!-- <label> -->
+                        <div>
+                            <button type="submit" class="button button2">Vote</button>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="option_two" name="poll" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                <p class="card-text">2. {{ poll.option_two }}</p>
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="option_three" name="poll" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                <p class="card-text">3. {{ poll.option_three }}</p>
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="option_four" name="poll" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                <p class="card-text">4. {{ poll.option_four }}</p>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-success">Vote</button>
+                        <!-- </label> -->
+                    </div>
                     </form>
+
+                </div>
             </div>
-
-
-        </div>
-    </center>
+            <!-- Post Ends -->
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

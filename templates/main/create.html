@@ -7,63 +7,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- {% static 'css/style.css' %} -->
     <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
-    
+    <!-- {% static 'img/logo1.png' %} -->
 
     <title>New Poll</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR HERE  -->
-    <navbar>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a class="active" href="{% url 'create' %}">New Poll</a></li>
-        </ul>
-    </navbar>
+    <!-- Header Starts -->
+    <div class="header">
+        <div class="header__left">
+            <img src="{% static 'img/logo1.png' %}" alt="" />
+            <h1>PoLL-कर</h1>
+        </div>
 
-
-
-    <header>
-        <!-- Image and text -->
-        <nav class="navbar1">
-
-            <img id="ilogo" src="{% static 'img/logo1.png' %}" width="50" alt="logo"><span> PoLL-कर</span> 
-
-        </nav>
-    </header>
-
-
-
-    <div>
-        <form method="POST" class="main-form">
-            {% csrf_token %}
-            <div >
-                <label for="qp-question"></label>
-                {% render_field form.question id="qp-question" placeholder="Type your question here?" %}
+        <div class="header__right">
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> home </i>
+                <h3><a class="active" href="{% url 'allpolls' %}">Home</a></h3>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput1">1.</label>  
-                {% render_field form.option_one class="form-control" id="formGroupExampleInput1" placeholder="Add First Option" size="26" %}
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> supervisor_account </i>
+                <h3>My Network</h3>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput2">2.</label>
-                {% render_field form.option_two class="form-control" id="formGroupExampleInput2" placeholder="Add Second Option" size="26" %}
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> notifications </i>
+                <h3>Notifications</h3>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput3">3.</label>
-                {% render_field form.option_three class="form-control" id="formGroupExampleInput3" placeholder="Add Third Option" size="26" %}
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> account_circle </i>
+                <h3>Me</h3>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput4">4. </label>
-                {% render_field form.option_four class="form-control" id="formGroupExampleInput4" placeholder="Add Fourth Option" size="26" %}                               
-            </div>
-            <button type="submit"><span>create PoLL</span></button>
+        </div>
+    </div>
+    <!-- Header Ends -->
+    <div class="body__main">
 
-        </form>
+            <!-- Sidebar Starts -->
+        <div class="sidebar">
+            <div class="sidebar__top">
+                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMjA3fDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080"
+                    alt="" />
+                <i class="material-icons sidebar__topAvatar"> account_circle </i>
+                <h2>suraj Patil</h2>
+                <h4>suraj.patil19@vit.edu</h4>
+            </div>
+
+            <div class="sidebar__stats">
+                <div class="sidebar__stat">
+                    <p>Who Viewed Your poll</p>
+                    <p class="sidebar__statNumber">100</p>
+                </div>
+
+            </div>
+
+            <div class="sidebar__bottom">
+                <h3>Recent Polls</h3>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>who will be the next indian pm</p>
+                </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>who will win the next ipl match</p>
+                </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>Was coronavirus created in Chinese lab?</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- Sidebar Ends -->
+
+
+
+        <div>
+            <form method="POST" class="main-form">
+                {% csrf_token %}
+                <div >
+                    <label for="qp-question"></label>
+                    {% render_field form.question id="qp-question" placeholder="Type your question here?" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput1">1.</label>  
+                    {% render_field form.option_one class="form-control" id="formGroupExampleInput1" placeholder="Add First Option" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">2.</label>
+                    {% render_field form.option_two class="form-control" id="formGroupExampleInput2" placeholder="Add Second Option" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput3">3.</label>
+                    {% render_field form.option_three class="form-control" id="formGroupExampleInput3" placeholder="Add Third Option" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput4">4. </label>
+                    {% render_field form.option_four class="form-control" id="formGroupExampleInput4" placeholder="Add Fourth Option" size="26" %}                               
+                </div>
+                <button type="submit"><span>create PoLL</span></button>
+
+            </form>
+        </div>
     </div>
     <br><br>
 

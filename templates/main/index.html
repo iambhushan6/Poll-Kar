@@ -1,0 +1,240 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Poll Kar</title>
+</head>
+
+<body>
+    <!-- Header Starts -->
+    <div class="header">
+        <div class="header__left">
+            <img src="{% static 'img/logo1.png' %}" alt="" />
+            <h1>PoLL-कर</h1>
+        </div>
+
+        <div class="header__right">
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> home </i>
+                <h3><a class="active" href="{% url 'allpolls' %}">Home</a></h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> supervisor_account </i>
+                <h3>My Network</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> notifications </i>
+                <h3>Notifications</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> account_circle </i>
+                <h3>Me</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+    <div class="body__main">
+        <!-- Sidebar Starts -->
+        <div class="sidebar">
+            <div class="sidebar__top">
+                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMjA3fDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080"
+                    alt="" />
+                <i class="material-icons sidebar__topAvatar"> account_circle </i>
+                <h2>suraj Patil</h2>
+                <h4>suraj.patil19@vit.edu</h4>
+            </div>
+
+            <div class="sidebar__stats">
+                <div class="sidebar__stat">
+                    <p>Who Viewed Your poll</p>
+                    <p class="sidebar__statNumber">100</p>
+                </div>
+
+            </div>
+
+            <div class="sidebar__bottom">
+                <h3>Recent Polls</h3>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>who will be the next indian pm</p>
+                </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>who will win the next ipl match</p>
+                </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>family man 1 me lonavala me kya hua tha?</p>
+                </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">#</span>
+                    <p>Was coronavirus created in Chinese lab?</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- Sidebar Ends -->
+
+        <!-- Feed Starts -->
+        <div class="feed">
+            <div class="feed__inputContainer">
+                <div class="feed__input">
+                    <i class="material-icons"> create </i>
+                    <!-- <button>create post</button> -->
+                    <form>
+                        <input type="text" />
+                        <button type="input">Add>
+                    </form>
+                </div>
+
+                <div class="feed__inputOptions">
+                    <div class="inputOption">
+                        <i class="material-icons">add</i>
+
+                        <a href="{% url 'create' %}" target="_blank" rel="noopener noreferrer"><h4>Crete PoLL</h4></a>
+                    </div>
+                    <div class="inputOption">
+                        <i class="large material-icons">insert_chart</i>
+
+                        <h4>Your Polls</h4>
+                    </div>
+
+                    <div class="inputOption">
+                        <i class="large material-icons"> trending_up</i>
+                        <h4>Trending Polls</h4>
+                    </div>
+
+                </div>
+            </div>
+
+
+            {% for poll in polls %}
+
+            <!-- Post Starts -->
+            <div>
+                <div class="wrapper">
+                    <header>{{ poll.question }}</header>
+                    <span class="text">{{ poll.datetime }}</span>
+                    <div class="poll-area">
+                        <input type="checkbox" name="poll" id="opt-1">
+                        <input type="checkbox" name="poll" id="opt-2">
+                        <input type="checkbox" name="poll" id="opt-3">
+                        <input type="checkbox" name="poll" id="opt-4">
+                        <!-- <button type="button" id="opt-4">view result</button>  -->
+                        <label for="opt-1" class="opt-1">
+                            <div class="row">
+                                <div class="column">
+                                    <span class="circle"></span>
+                                    <span class="text">{{ poll.option_one }}</span>
+                                </div>
+                            </div>
+
+                        </label>
+                        <label for="opt-2" class="opt-2">
+                            <div class="row">
+                                <div class="column">
+                                    <span class="circle"></span>
+                                    <span class="text">{{ poll.option_two }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <label for="opt-3" class="opt-3">
+                            <div class="row">
+                                <div class="column">
+                                    <span class="circle"></span>
+                                    <span class="text">{{ poll.option_three }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <label for="opt-4" class="opt-4">
+                            <div class="row">
+                                <div class="column">
+                                    <span class="circle"></span>
+                                    <span class="text">{{ poll.option_four }}</span>
+                                </div>
+
+                            </div>
+
+                        </label>
+                        <!-- <label> -->
+                        <div style="display: inline-block;">
+                            <a href="{% url 'vote' poll.id %}"><button type="button" class="button button2"> Vote- </button></a>
+                        </div>
+                        <div style="display: inline-block;">
+                            <a href="{% url 'result' poll.id %}"><button type="button" class="button button2">Result</button></a>
+                        </div>
+                        <!-- </label> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Post Ends -->
+            {% endfor %}
+
+
+            <!-- Feed Ends -->
+        </div>>
+
+
+        <!-- Widgets Starts -->
+        <div class="widgets">
+            <div class="widgets__header">
+                <h2>News Feed
+
+                </h2>
+                <i class="material-icons"> info </i>
+            </div>
+            <div class="widgets__article">
+                <div class="widgets__articleLeft">
+                    <i class="material-icons"> fiber_manual_record </i>
+                </div>
+                <div class="widgets__articleRight">
+                    <h4>corona cases increses from 4k to 6 k</h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
+
+            <div class="widgets__article">
+                <div class="widgets__articleLeft">
+                    <i class="material-icons"> fiber_manual_record </i>
+                </div>
+                <div class="widgets__articleRight">
+                    <h4>how Poll kar helping businesses</h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
+
+            <div class="widgets__article">
+                <div class="widgets__articleLeft">
+                    <i class="material-icons"> fiber_manual_record </i>
+                </div>
+                <div class="widgets__articleRight">
+                    <h4>top news</h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Widgets Ends -->
+    </div>
+    <!-- Main Body Ends -->
+</body>
+
+</html>

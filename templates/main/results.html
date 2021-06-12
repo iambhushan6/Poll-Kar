@@ -6,34 +6,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
-    
+     <!-- {% static 'css/style.css' %} -->
+    <link rel="icon" href="{% static 'img/logo1.png' %}"  type="image" sizes="16x16">
+        <!-- {% static 'img/logo1.png' %} -->
 
     <title>Result</title>
 </head>
 
 <body>
 
-    <!-- NAVBAR HERE  -->
-    <navbar>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'create' %}">New Poll</a></li>
-        </ul>
-    </navbar>
+    <!-- Header Starts -->
+    <div class="header">
+        <div class="header__left">
+            <img src="{% static 'img/logo1.png' %}" alt="" />
+            <h1>PoLL-कर</h1>
+        </div>
 
-
-
-    <header>
-        <!-- Image and text -->
-        <nav class="navbar1">
-
-            <img id="ilogo" src="{% static 'img/logo1.png' %}" width="50" alt="logo"><span> PoLL-कर</span> 
-
-        </nav>
-    </header>
+        <div class="header__right">
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> home </i>
+                <h3><a class="active" href="{% url 'allpolls' %}">Home</a></h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> supervisor_account </i>
+                <h3>My Network</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> notifications </i>
+                <h3>Notifications</h3>
+            </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> account_circle </i>
+                <h3>Me</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Header Ends -->
 
 
 <br><br>
@@ -47,12 +60,65 @@
                 <p class="card-text"><strong>3. {{ poll.option_three }}</strong> votes: <strong>{{ poll.option_three_count}}</strong></p>
                 <p class="card-text"><strong>4. {{ poll.option_four }}</strong> votes: <strong>{{ poll.option_four_count }}</strong></p>
             </div>
+        </div><br><br><br>
+
+        <div style=" display: block; justify-content:start; background-color: rgb(255, 255, 255); width: 40vw; height: fit-content; ">
+            <canvas style=" font-weight: bold;"  id="piechart" style="width:100%;max-width:600px"></canvas><br><br>
+            <canvas style=" font-weight: bold;"  id="bargraph" style="width:100%;max-width:600px"></canvas><br>
         </div>
+
     </center>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
+    <script>
+        var xValues = ["{{ poll.option_one }}", "{{ poll.option_two }}", "{{ poll.option_three }}", "{{ poll.option_four }}"];
+        var yValues = ["{{ poll.option_one_count }}" ,"{{ poll.option_two_count }}", "{{ poll.option_three_count}}", "{{ poll.option_four_count }}" ];//vote for each option
+        var barColors = ["red", "green","blue","orange"];
+        
+        new Chart("bargraph", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "{{ poll.question }}"
+            }
+          }
+        });
+        </script>
+
+    <script>
+    var xValues = ["{{ poll.option_one }}", "{{ poll.option_two }}", "{{ poll.option_three }}", "{{ poll.option_four }}"];
+    var yValues = [{{ poll.option_one_count }} ,{{ poll.option_two_count }}, {{ poll.option_three_count}}, {{ poll.option_four_count }} ];//vote for each option
+    var barColors = ["red", "green","blue","orange"];
+    
+    new Chart("piechart", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: true},
+        title: {
+          display: true,
+          text: "{{ poll.question }}"
+        }
+      }
+    });
+    </script>
 
 </body>
 
