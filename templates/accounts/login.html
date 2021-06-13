@@ -1,0 +1,71 @@
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Yinka Enoch Adedokun">
+    <link rel="stylesheet" href="{% static 'css/accounts/loginpage.css' %}">
+    <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
+
+	<title>Login Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+				<h4 class="company_title"><img src="{% static 'img/logo1.png' %}" alt="POLLKAR"></h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2>Log In</h2>
+					</div>
+					<div class="row">
+						<form method="POST" class="form-group">
+							{% csrf_token %}
+							<div class="row">
+								<input type="text" name="username" id="username" class="form__input" placeholder="Enter Username">
+							</div>
+							<div class="row">
+								<!-- <span class="fa fa-lock"></span> -->
+								<input type="password" name="password" id="password" class="form__input" placeholder="Enter Password">
+							</div>
+							<div class="row">
+								<input type="submit" value="Login to my Account" class="btn">
+							</div>
+						</form>
+					</div>
+					<div class="row">
+						<p>Don't have an account? <a href="{% url 'signup' %}">Register Here</a></p>
+					</div>
+
+
+					{% comment %} <form method="POST">
+					{% csrf_token %}
+
+						<input type="text" name="username" id="username" class="form__input" placeholder="Enter Username">
+						<input type="password" name="password" id="password" class="form__input" placeholder="Enter Password">
+						<input type="submit" value="Login to my Account">
+					</form> {% endcomment %}
+
+
+					{% for messege in messages %}
+						{{messege}}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

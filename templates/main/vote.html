@@ -44,6 +44,10 @@
                 <i class="material-icons headerOption__icon"> account_circle </i>
                 <h3>Me</h3>
             </div>
+            <div class="headerOption">
+                <i class="material-icons headerOption__icon"> logout </i>
+                <h3><a href="{% url 'logout' %}">Logout</a></h3>
+            </div>
         </div>
     </div>
     <!-- Header Ends -->
@@ -85,7 +89,7 @@
                         <label for="opt-1" class="opt-1">
                             <div class="row">
                                 <div class="column">
-                                    {% comment %} <span class="circle"></span> {% endcomment %}
+                                    <span class="circle"></span>
                                     <span>{{ poll.option_one }}</span>
                                 </div>
                             </div>
@@ -94,7 +98,7 @@
                         <label for="opt-2" class="opt-2">
                             <div class="row">
                                 <div class="column">
-                                    <!-- <span class="circle"></span> -->
+                                    <span class="circle"></span>
                                     <span class="text">{{ poll.option_two }}</span>
                                 </div>
 
@@ -104,7 +108,7 @@
                         <label for="opt-3" class="opt-3">
                             <div class="row">
                                 <div class="column">
-                                    <!-- <span class="circle"></span> -->
+                                    <span class="circle"></span>
                                     <span class="text">{{ poll.option_three }}</span>
                                 </div>
 
@@ -114,7 +118,7 @@
                         <label for="opt-4" class="opt-4">
                             <div class="row">
                                 <div class="column">
-                                    <!-- <span class="circle"></span> -->
+                                    <span class="circle"></span>
                                     <span class="text">{{ poll.option_four }}</span>
                                 </div>
 
@@ -122,9 +126,11 @@
 
                         </label>
                         <!-- <label> -->
-                        <div>
-                            <button type="submit" class="button button2">Vote</button>
-                        </div>
+                            <center>
+                                <div>
+                                    <button type="submit" class="button button2">Vote</button>
+                                </div>
+                            </center>
                         <!-- </label> -->
                     </div>
                     </form>

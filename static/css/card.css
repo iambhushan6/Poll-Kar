@@ -66,9 +66,9 @@
   border: 2px solid #e6e6e6;
   transition: all 0.2s ease;
 }
-/* .poll-area label:hover{
+.poll-area label:hover{
   border-color: rgb(0, 0, 0);
-} */
+}
 label.selected{
   border-color: #6665ee!important;
 }
@@ -104,10 +104,10 @@ label .row .circle::after{
   top: 2px;
   display: none;
 }
-/* .poll-area label:hover .row .circle::after{
+.poll-area label:hover .row .circle::after{
   display: block;
   background: #e6e6e6;
-} */
+}
 label.selected .row .circle::after{
   display: block;
   background: #6665ee!important;
