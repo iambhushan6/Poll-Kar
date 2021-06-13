@@ -32,7 +32,6 @@
 					</div>
 					<div class="row">
 						<form method="POST" class="form-group">
-							{% csrf_token %}
 							<div class="row">
 								<input type="text" name="username" id="username" class="form__input" placeholder="Enter Username">
 							</div>
@@ -48,15 +47,6 @@
 					<div class="row">
 						<p>Don't have an account? <a href="{% url 'signup' %}">Register Here</a></p>
 					</div>
-
-
-					{% comment %} <form method="POST">
-					{% csrf_token %}
-
-						<input type="text" name="username" id="username" class="form__input" placeholder="Enter Username">
-						<input type="password" name="password" id="password" class="form__input" placeholder="Enter Password">
-						<input type="submit" value="Login to my Account">
-					</form> {% endcomment %}
 
 
 					{% for messege in messages %}

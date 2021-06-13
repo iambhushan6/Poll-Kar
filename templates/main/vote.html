@@ -42,7 +42,7 @@
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> account_circle </i>
-                <h3>Me</h3>
+                <a href="{% url 'mypolls' %}">Profile</a>
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> logout </i>
@@ -127,7 +127,7 @@
                         </label>
                         <!-- <label> -->
                             <center>
-                                <div>
+                                <div style="margin-left:-200px;">
                                     <button type="submit" class="button button2">Vote</button>
                                 </div>
                             </center>

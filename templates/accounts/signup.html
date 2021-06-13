@@ -1,19 +1,62 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
+
     <title>SIGNUP</title>
 </head>
 <body>
+       <center>
         <h1>Signup User</h1><br>
-        <form  method="post">
+        <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
+       </center> 
+        {% comment %} <form  method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button name='signup' type="submit">Create Account </button>
         </form><br>
-        <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
+        {% endcomment %}
+
+
+        <div>
+            <form method="POST" class="main-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput1">1.</label>  
+                    {% render_field form.username class="form-control" id="formGroupExampleInput1" placeholder="Enter username" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">2.</label>
+                    {% render_field form.password1 class="form-control" id="formGroupExampleInput2" placeholder="Enter Password" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput3">3.</label>
+                    {% render_field form.password2 class="form-control" id="formGroupExampleInput3" placeholder="Retype password" size="26" %}
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput4">4. </label>
+                    {% render_field form.email class="form-control" id="formGroupExampleInput4" placeholder="Enter email" size="26" %}                               
+                </div>
+                <button type="submit"><span>Sign Up</span></button>
+
+            </form>
+            
+        </div>
+
+					
+					{% for messege in form.error %}
+						{{messege}}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
