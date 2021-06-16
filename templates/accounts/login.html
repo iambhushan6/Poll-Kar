@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Yinka Enoch Adedokun">
     <link rel="stylesheet" href="{% static 'css/accounts/loginpage.css' %}">
     <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
 
@@ -12,12 +11,34 @@
         *{
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: cursive;
         }
+		body {
+	/* background: rgb(2,0,36); */
+		background-repeat: no-repeat;
+	/* background-position:cover ; */
+	
+		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+		background-size: 400% 400%;
+		animation: gradient 15s ease infinite;
+
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
     </style>
 
 </head>
-<body>
+<body><br><br><br><br>
 	<!-- Main Content -->
 	<div class="container-fluid">
 		<div class="row main-content bg-success text-center">
@@ -28,7 +49,9 @@
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
 					<div class="row">
-						<h2>Log In</h2>
+					<center>
+						<h2>Log In to PollKar</h2>
+					</center>
 					</div>
 					<div class="row">
 						<form method="POST" class="form-group">
@@ -47,10 +70,8 @@
 					<div class="row">
 						<p>Don't have an account? <a href="{% url 'signup' %}">Register Here</a></p>
 					</div>
-
-
 					{% for messege in messages %}
-						{{messege}}
+						{{ messege }}
 					{% endfor %}
 				</div>
 			</div>

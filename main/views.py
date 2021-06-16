@@ -73,7 +73,9 @@ def vote(request, pk):
 @login_required(login_url='login')
 def results(request, pk):
     poll = models.Poll.objects.get(pk=pk)
+    totalvotes = poll.option_one_count + poll.option_two_count + poll.option_three_count + poll.option_four_count
     context = {
-        'poll': poll
+        'poll': poll,
+        'totalvotes' : totalvotes
     }
     return render( request, 'main/results.html', context)

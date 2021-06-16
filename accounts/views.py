@@ -12,8 +12,8 @@ from django.contrib import messages
 
 
 def loginkar(request):
-    # if request.user.is_authenticated:
-    #     return redirect('allpolls')
+    if request.user.is_authenticated:
+        return redirect('allpolls')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -21,7 +21,7 @@ def loginkar(request):
         if user is not None:
             login(request, user)
             return redirect('allpolls')
-        else: HttpResponse('Invalid Credentials!')
+        else: messages.error(request, "Invalid Credentials! Please try again.")
 
     return render(request, 'accounts/login.html')
 

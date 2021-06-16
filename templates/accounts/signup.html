@@ -8,55 +8,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'img/logo1.png' %}" type="image" sizes="16x16">
+    <link rel="stylesheet" href="{% static 'css/accounts/loginpage.css' %}">
 
     <title>SIGNUP</title>
+    <style>
+        *{
+            color: white;
+            font-family: cursive;
+        }
+        input{
+            color: black;
+            font-family: cursive;
+        }
+    </style>
 </head>
 <body>
-       <center>
-        <h1>Signup User</h1><br>
-        <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
-       </center> 
+       <center><br><br><br>
+        <h1>Signup Here</h1>
+ 
+       <!-- </center> 
         {% comment %} <form  method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button name='signup' type="submit">Create Account </button>
         </form><br>
-        {% endcomment %}
+        {% endcomment %} -->
 
 
-        <div>
+        <div class="container-fluid" style="margin-left: -550px; margin-top: -100px;">
             <form method="POST" class="main-form">
                 {% csrf_token %}
+                <h3>Username here</h3> 
                 <div class="form-group">
-                    <label for="formGroupExampleInput1">1.</label>  
-                    {% render_field form.username class="form-control" id="formGroupExampleInput1" placeholder="Enter username" size="26" %}
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">2.</label>
-                    {% render_field form.password1 class="form-control" id="formGroupExampleInput2" placeholder="Enter Password" size="26" %}
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput3">3.</label>
-                    {% render_field form.password2 class="form-control" id="formGroupExampleInput3" placeholder="Retype password" size="26" %}
-                </div>
+                    <label for="formGroupExampleInput1">1.</label> 
+                    {% render_field form.username class="form-control" id="formGroupExampleInput1" placeholder="Letters, digits and @/./+/-/_ only" size="26" %}
+                </div><br>
+                <h3>Enter Email here</h3>
                 <div class="form-group">
                     <label for="formGroupExampleInput4">4. </label>
-                    {% render_field form.email class="form-control" id="formGroupExampleInput4" placeholder="Enter email" size="26" %}                               
+                    {% render_field form.email class="form-control" id="formGroupExampleInput4" placeholder="example@gmail.com" size="26" %}                               
+                </div><br>
+                <h3>Enter Password</h3>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">2.</label>
+                    {% render_field form.password1 class="form-control" id="formGroupExampleInput2" placeholder="must contain at least 8 char" size="26" %}
+                </div><br>
+                <h3>Retype password</h3>
+                <div class="form-group">
+                    <label for="formGroupExampleInput3">3.</label>
+                    {% render_field form.password2 class="form-control" id="formGroupExampleInput3" placeholder="can’t be too similar to username" size="26" %}
                 </div>
-                <button type="submit"><span>Sign Up</span></button>
+                <button type="submit"><span>Sign Up</span></button><br><br>
 
             </form>
+
             
         </div>
-
-					
-					{% for messege in form.error %}
-						{{messege}}
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
+        <h3>
+            <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
+        </h3>
+        <div>		
+            {% for messege in forms.error %}
+                {{messege}}
+            {% endfor %}
+        </div>
+    </center>
 
 </body>
 </html>

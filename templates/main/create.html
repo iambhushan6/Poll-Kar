@@ -47,7 +47,7 @@
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> account_circle </i>
-                <a href="{% url 'mypolls' %}">Profile</a>
+                <h3><a href="{% url 'mypolls' %}">{{ request.user }}</a></h3>
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> logout </i>

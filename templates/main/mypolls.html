@@ -40,7 +40,7 @@
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> account_circle </i>
-                <h3>Me</h3>
+                <h3><a href="{% url 'mypolls' %}">{{ request.user }}</a></h3>
             </div>
             <div class="headerOption">
                 <i class="material-icons headerOption__icon"> logout </i>
@@ -120,7 +120,7 @@
 
                     <div class="inputOption">
                         <i class="large material-icons"> trending_up</i>
-                        <h4>Trending Polls</h4>
+                        <a href="{% url 'allpolls' %}"><h4>Trending-Polls</h4></a>
                     </div>
 
                 </div>
